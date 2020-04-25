@@ -1,0 +1,3 @@
+﻿  Fifteens.cpp
+C:\Users\dan-m\source\repos\Fifteens\Fifteens\Fifteens.cpp(12,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Fifteens.vcxproj -> C:\Users\dan-m\source\repos\Fifteens\x64\Debug\Fifteens.exe
