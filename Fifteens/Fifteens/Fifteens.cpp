@@ -17,6 +17,7 @@ int main()
 
 	RenderWindow window(VideoMode(600, 600), "Fifteen", sf::Style::Close);
 	window.setVerticalSyncEnabled(true);
+	window.setFramerateLimit(60);
 
 	Font font;
 	font.loadFromFile("Arcade.ttf");
@@ -24,7 +25,7 @@ int main()
 	text.setPosition(80, 0);
 	text.setFillColor(Color(R, G, B, A));
 
-	Text Keys("Esc - Exit, F5 - New Game, Arrow Keys - Move bones", font, 15);
+	Text Keys("Esc - Exit, F5 - New Game, Mouse Click - Move bones", font, 15);
 	Keys.setPosition(15, 570);
 	Keys.setFillColor(Color(R, G, B, A));
 
@@ -46,7 +47,7 @@ int main()
 		for (int j = 0; j < 4; j++) {
 			n++;
 			sprite[n].setTexture(bones);
-			sprite[n].setTextureRect(IntRect(i * blockwidth, j * blockwidth, blockwidth, blockwidth));
+			sprite[n].setTextureRect(IntRect(i * 125, j * 125, 125, 125));
 			field[i + 1][j + 1] = n;
 		}
 	}
@@ -85,13 +86,47 @@ int main()
 			clock.restart().asSeconds();
 		}
 
+		if (event.type == Event::MouseButtonPressed)
+		{
+			if (event.key.code == Mouse::Left)
+			{
+				Vector2i position = Mouse::getPosition(window);
+				int x = position.x / blockwidth + 1;
+				int y = position.y / blockwidth + 1;
+
+				int dx = 0;
+				int dy = 0;
+
+
+				if (field[x + 1][y] == 16) { dx = 1; dy = 0; };
+				if (field[x][y + 1] == 16) { dx = 0; dy = 1; };
+				if (field[x][y - 1] == 16) { dx = 0; dy = -1; };
+				if (field[x - 1][y] == 16) { dx = -1; dy = 0; };
+
+				int temp = field[x][y];
+				field[x][y] = 16;
+				field[x + dx][y + dy] = temp;
+
+
+				/*sprite[16].move(-dx * blockwidth, -dy * blockwidth);
+				float speed = 6;
+				for (int i = 0; i < blockwidth; i += speed)
+				{
+					sprite[temp].move(speed * dx, speed * dy);
+					window.draw(sprite[16]);
+					window.draw(sprite[temp]);
+					window.display();
+				}*/
+			}
+
+		}
 
 		for (int i = 0; i < 4; i++)
 			for (int j = 0; j < 4; j++)
 			{
 				int n = field[i + 1][j + 1];
 				sprite[n].setPosition(i * blockwidth, j * blockwidth);
-				sprite[n].move(51, 51);
+				sprite[n].move(50, 50);
 				window.draw(sprite[n]);
 			}
 

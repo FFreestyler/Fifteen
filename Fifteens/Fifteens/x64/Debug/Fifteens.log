@@ -1,5 +1,5 @@
 ﻿  Fifteens.cpp
 C:\Users\dan-m\source\repos\Fifteen\Fifteens\Fifteens\Fifteens.cpp(12,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\dan-m\source\repos\Fifteen\Fifteens\Fifteens\Fifteens.cpp(93,45): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\dan-m\source\repos\Fifteen\Fifteens\Fifteens\Fifteens.cpp(93,29): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\dan-m\source\repos\Fifteen\Fifteens\Fifteens\Fifteens.cpp(128,45): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\dan-m\source\repos\Fifteen\Fifteens\Fifteens\Fifteens.cpp(128,29): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
   Fifteens.vcxproj -> C:\Users\dan-m\source\repos\Fifteen\Fifteens\x64\Debug\Fifteens.exe
