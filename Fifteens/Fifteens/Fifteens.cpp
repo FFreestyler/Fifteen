@@ -15,13 +15,13 @@ int main()
 	int B = 100;
 	int A = 255;
 
-	RenderWindow window(VideoMode(600, 600), "English Word", sf::Style::Close);
+	RenderWindow window(VideoMode(600, 600), "Fifteen", sf::Style::Close);
 	window.setVerticalSyncEnabled(true);
 
 	Font font;
 	font.loadFromFile("Arcade.ttf");
-	Text text("Arcade Fifteens game", font, 30);
-	text.setPosition(75, 0);
+	Text text("Arcade Fifteen game", font, 30);
+	text.setPosition(80, 0);
 	text.setFillColor(Color(R, G, B, A));
 
 	Text Keys("Esc - Exit, F5 - New Game, Arrow Keys - Move bones", font, 15);
@@ -32,7 +32,25 @@ int main()
 	rectangle.setFillColor(Color::Black);
 	rectangle.setOutlineThickness(1);
 	rectangle.move(50, 50);
-	rectangle.setOutlineColor(Color(197, 0, 128));
+	rectangle.setOutlineColor(Color(188, 0, 141));
+	
+	Texture bones;
+	bones.loadFromFile("bones.png");
+
+	int blockwidth = 125;
+	int field[6][6] = { 0 };
+	Sprite sprite[17];
+	int n = 0;
+
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			n++;
+			sprite[n].setTexture(bones);
+			sprite[n].setTextureRect(IntRect(i * blockwidth, j * blockwidth, blockwidth, blockwidth));
+			field[i + 1][j + 1] = n;
+		}
+	}
+
 
 	sf::Clock clock;
 	sf::Time time;
@@ -56,7 +74,7 @@ int main()
 		}
 
 		time = clock.getElapsedTime();
-		if (time.asSeconds() > 1)
+		if (time.asSeconds() > 2)
 		{
 			R = rand() % 255;
 			G = rand() % 255;
@@ -65,11 +83,22 @@ int main()
 			text.setFillColor(Color(R, G, B, A));
 			Keys.setFillColor(Color(R, G, B, A));
 			clock.restart().asSeconds();
-
 		}
+
+
+		for (int i = 0; i < 4; i++)
+			for (int j = 0; j < 4; j++)
+			{
+				int n = field[i + 1][j + 1];
+				sprite[n].setPosition(i * blockwidth, j * blockwidth);
+				sprite[n].move(51, 51);
+				window.draw(sprite[n]);
+			}
+
 
 		window.display();
 	}
+
 
 	return 0;
 }

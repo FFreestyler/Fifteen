@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="Fifteens.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Class.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{DF39F637-4705-4F9C-8984-A6DC6576B054}</ProjectGuid>
