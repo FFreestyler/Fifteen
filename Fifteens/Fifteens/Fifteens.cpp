@@ -107,16 +107,6 @@ int main()
 				field[x][y] = 16;
 				field[x + dx][y + dy] = temp;
 
-
-				/*sprite[16].move(-dx * blockwidth, -dy * blockwidth);
-				float speed = 6;
-				for (int i = 0; i < blockwidth; i += speed)
-				{
-					sprite[temp].move(speed * dx, speed * dy);
-					window.draw(sprite[16]);
-					window.draw(sprite[temp]);
-					window.display();
-				}*/
 			}
 
 		}
